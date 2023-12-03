@@ -16,7 +16,8 @@
       ]
     },
     "e2e": {
-      "cache": true
+      "cache": true,
+      "inputs": ["default", "^production"]
     },
     "@nx/jest:jest": {
       "cache": true,
@@ -58,9 +59,27 @@
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/src/test-setup.[jt]s",
-      "!{projectRoot}/test-setup.[jt]s"
+      "!{projectRoot}/test-setup.[jt]s",
+      "!{projectRoot}/cypress/**/*",
+      "!{projectRoot}/**/*.cy.[jt]s?(x)",
+      "!{projectRoot}/cypress.config.[jt]s"
     ],
     "sharedGlobals": []
   },
-  "nxCloudAccessToken": "MWZkMGYyMTItNmNlNC00MmMzLTg4N2QtMjU3NzI3NzczYTQ1fHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "MWZkMGYyMTItNmNlNC00MmMzLTg4N2QtMjU3NzI3NzczYTQ1fHJlYWQtd3JpdGU=",
+  "generators": {
+    "@nx/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "css"
+    }
+  }
 }
