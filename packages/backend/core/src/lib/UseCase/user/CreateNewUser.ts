@@ -30,9 +30,11 @@ export class CreateUser {
     validate() {
         const request = this.request.build();
         const validator = new Validator(request).Validate(validateNewUser);
+        console.log(validator);
         if (!validator.IsValid) {
-            throw new Error(validator.Errors.join('\n'));
+            return validator.Errors.join('\n');
         }
+        return null;
     }
 
 
@@ -43,12 +45,14 @@ export class CreateUser {
      * @memberof CreateUser
      */
     async execute(): Promise<number | undefined> {
-        this.validate();
+
         const request = this.request.build();
+        console.log(request);
         const userId = await this.userRepository.create(request);
         return userId;
     }
 }
+
 
 const validateNewUser = (validator: IValidator<UserModel>): ValidationResult => {
     return validator
